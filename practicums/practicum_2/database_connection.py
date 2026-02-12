@@ -13,3 +13,5 @@ engine = create_engine(
     echo=True,  # Показывать SQL запросы в консоли
     future=True  # Использовать SQLAlchemy 2.0 стиль
 )
+
+
