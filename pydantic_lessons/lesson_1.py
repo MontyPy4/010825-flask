@@ -81,12 +81,12 @@ from pydantic import BaseModel
 
 # ==============================================================================
 
-# Inheritance in Pydantic
+# Inheritance in Pydantic - Наследование
 
 # ==============================================================================
 
 # import re
-# from enum import StrEnum
+# from enum import StrEnum # строк перечисления
 # from datetime import datetime
 #
 #
@@ -97,13 +97,14 @@ from pydantic import BaseModel
 #     MRI = "mri"
 #
 #
-# class LabTestBase(BaseModel):
+# class LabTestBase(BaseModel):  # создание базового контракта
 #     patient_id: int
 #     test_type: TestType
 #     test_date: datetime
 #
 #
 # class LabTestRequest(LabTestBase):
+
 #     notes: str
 #
 #
@@ -111,12 +112,13 @@ from pydantic import BaseModel
 #     id: int
 #     result: str | None = None
 #     is_completed: bool
+# # Метод при вызове которого мы узнаем на сколько важен анализ (urgent)
 #
 #     def is_urgent(self) -> bool:
 #         if not self.result:
 #             return False
 #
-#         if "гемоглобин" in self.result.lower():
+#         if "гемоглобин" in self.result.lower():  # поиск без учета регистра
 #             match_pattern = re.search(r"(\d+)\s*г/л", self.result.lower())
 #             if match_pattern:
 #                 value = int(match_pattern.group(1))
@@ -124,7 +126,7 @@ from pydantic import BaseModel
 #         return False
 #
 #
-# raw_data = """{
+# raw_data = """{            # Десериализация
 #     "id": 1,
 #     "patient_id": 123,
 #     "test_type": "blood",
